@@ -5,9 +5,11 @@ import android.os.Build;
 import android.os.StrictMode;
 
 
+import com.corelibs.api.ApiFactory;
 import com.corelibs.common.Configuration;
 
 import com.corelibs.utils.ToastMgr;
+import com.parity.device.constants.Urls;
 
 
 public class App extends Application {
@@ -29,7 +31,7 @@ public class App extends Application {
 //        GlobalExceptionHandler.getInstance().init(this, getResources().getString(R.string.app_name)); //初始化全局异常捕获
         ToastMgr.init(getApplicationContext()); //初始化Toast管理器
         Configuration.enableLoggingNetworkParams(); //打开网络请求Log打印，需要在初始化Retrofit接口工厂之前调用
-//        ApiFactory.getFactory().add(Urls.GITHUB_API); //初始化Retrofit接口工厂
+        ApiFactory.getFactory().add(Urls.DOMAIN_ROOT); //初始化Retrofit接口工厂
 //        PreferencesHelper.init(getApplicationContext()); //初始化SharedPreferences工具类
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
