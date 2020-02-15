@@ -24,6 +24,7 @@
         />
 
     <EditText
+        android:id="@+id/edt_query_area"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/bg_edit_focus"
@@ -70,13 +71,16 @@
         <ListView
             android:id="@+id/listview_search_result"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/white"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_white_75"
             android:cacheColorHint="@android:color/transparent"
             android:listSelector="@android:color/transparent"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp"
-            android:visibility="gone"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:visibility="gone"
+            />
 
         <include layout="@layout/cp_view_no_search_result" />
     </RelativeLayout>

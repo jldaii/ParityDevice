@@ -10,21 +10,19 @@ import android.widget.PopupWindow;
 
 import com.city.picker.R;
 
-public class QueryAreaWindow  extends PopupWindow {
+public class QueryAreaWindow extends PopupWindow {
 
     private Context mContext;
 
     public QueryAreaWindow(Context context) {
         super(context);
         this.mContext = context;
-
         setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         setOutsideTouchable(true);
-        setFocusable(true);
+        setFocusable(false);
         setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        View contentView = LayoutInflater.from(context).inflate(R.layout.popup_query_area,
-                null, false);
+        View contentView = LayoutInflater.from(context).inflate(R.layout.popup_query_area, null, false);
         setContentView(contentView);
     }
 }

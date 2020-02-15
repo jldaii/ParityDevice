@@ -36,6 +36,7 @@ import com.parity.datapersistence.model.LocateState;
 import com.parity.datapersistence.requestBean.AreaDataRequestBean;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,6 +59,7 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
     // 标题栏
     private NavBar navBar;
 
+    private EditText edtQueryArea;
     private CityListAdapter mCityAdapter;
     private ResultListAdapter mResultAdapter;
     private List<AreaMsgDbBean> mAllCities;
@@ -71,6 +73,7 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
     private AreaDataRequestBean mAreaDataRequestBean;
 
     private String mType;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -135,9 +138,7 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
 
         navBar.setTitle(this.getString(R.string.txt_International_price_comparator));
         navBar.showBack();
-
-
-
+        edtQueryArea = (EditText) findViewById(R.id.edt_query_area);
         mListView = (ListView) findViewById(R.id.listview_all_city);
         mListView.setAdapter(mCityAdapter);
         mSearchLayout = (LinearLayout) findViewById(R.id.search_layout);
@@ -182,7 +183,67 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
                         emptyView.setVisibility(View.VISIBLE);
                     } else {
                         emptyView.setVisibility(View.GONE);
-                        mResultAdapter.changeData(mResultCities);
+                        mResultAdapter.changeData(mResultCities,keyword);
+                    }
+                }
+            }
+        });
+
+        edtQueryArea.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String keyWord = s.toString();
+                if (TextUtils.isEmpty(keyWord)) {
+                    clearBtn.setVisibility(View.GONE);
+                    emptyView.setVisibility(View.GONE);
+                    mResultListView.setVisibility(View.GONE);
+                } else {
+                    clearBtn.setVisibility(View.VISIBLE);
+                    mResultListView.setVisibility(View.VISIBLE);
+                    if (mAreaDataRequestBean == null) {
+                        emptyView.setVisibility(View.VISIBLE);
+                    } else {
+                        emptyView.setVisibility(View.GONE);
+                        if (TextUtils.equals(mType, DataConstants.AreaDataConstant.TYPE_FROM)){
+                            if (null!=mAreaDataRequestBean.getFrom() && !mAreaDataRequestBean.getFrom().isEmpty()){
+                                List<AreaMsgDbBean> fromList = new ArrayList<>();
+                                for (AreaMsgDbBean dbBean : mAreaDataRequestBean.getFrom()) {
+                                    if (dbBean.getPlaceName().contains(keyWord)){
+                                        fromList.add(dbBean);
+                                    }
+                                }
+                                if (!fromList.isEmpty()){
+                                    mResultAdapter.changeData(fromList,keyWord);
+                                }else {
+                                    emptyView.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        }else {
+                            if (null!=mAreaDataRequestBean.getTo() && !mAreaDataRequestBean.getTo().isEmpty()){
+                                List<AreaMsgDbBean> toList = new ArrayList<>();
+                                for (AreaMsgDbBean dbBean : mAreaDataRequestBean.getTo()) {
+                                    if (dbBean.getPlaceName().contains(keyWord)){
+                                        toList.add(dbBean);
+                                    }
+                                }
+                                if (!toList.isEmpty()){
+                                    mResultAdapter.changeData(toList,keyWord);
+                                }else {
+                                    emptyView.setVisibility(View.VISIBLE);
+                                }
+
+                            }
+                        }
                     }
                 }
             }

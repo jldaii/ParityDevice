@@ -1,6 +1,7 @@
 package com.city.picker.adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,19 +18,22 @@ import java.util.List;
 public class ResultListAdapter extends BaseAdapter {
     private Context mContext;
     private List<AreaMsgDbBean> mCities;
+    private String mKeyWord;
 
-    public ResultListAdapter(Context mContext, List<AreaMsgDbBean> mCities) {
-        this.mCities = mCities;
-        this.mContext = mContext;
+    public ResultListAdapter(Context context, List<AreaMsgDbBean> cities) {
+        this.mCities = cities;
+        this.mContext = context;
     }
 
-    public void changeData(List<AreaMsgDbBean> list){
-        if (mCities == null){
-            mCities = list;
-        }else{
-            mCities.clear();
-            mCities.addAll(list);
-        }
+    public void changeData(List<AreaMsgDbBean> list,String keyWord){
+//        if (mCities == null){
+//            mCities = list;
+//        }else{
+//            mCities.clear();
+//            mCities.addAll(list);
+//        }
+        mCities = list;
+        mKeyWord= keyWord;
         notifyDataSetChanged();
     }
 
@@ -59,7 +63,11 @@ public class ResultListAdapter extends BaseAdapter {
         }else{
             holder = (ResultViewHolder) view.getTag();
         }
-        holder.name.setText(mCities.get(position).getPlaceName());
+        /**
+         * 替换字体颜色
+         */
+        String newText = mCities.get(position).getPlaceName().replace(mKeyWord,String.format("<font color='#FF0000'>%s</font>",mKeyWord));
+        holder.name.setText(Html.fromHtml(newText));
         return view;
     }
 
