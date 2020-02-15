@@ -1,0 +1,73 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="nav_height">48dp</dimen>
+
+    <dimen name="side_letter_bar_letter_size">11sp</dimen>
+    <dimen name="side_letter_bar_width">36dp</dimen>
+    <dimen name="city_text_size">14sp</dimen>
+
+
+    <dimen name="ac_horizontal_margin">13dp</dimen>
+
+    <!--文字大小-->
+    <dimen name="text_nav">18dp</dimen>
+    <dimen name="text_title">16dp</dimen>
+    <dimen name="text_big">17dp</dimen>
+    <dimen name="text_midddle">15dp</dimen>
+    <dimen name="text_normal">14dp</dimen>
+    <dimen name="text_small">13sp</dimen>
+    <dimen name="text_smaller">12dp</dimen>
+    <dimen name="text_extra">20dp</dimen>
+    <dimen name="text_huge">40dp</dimen>
+
+
+    <!--边距-->
+    <dimen name="margin_spacing_0.5">0.5dp</dimen>
+    <dimen name="margin_spacing_1">1dp</dimen>
+    <dimen name="margin_spacing_2">2dp</dimen>
+    <dimen name="margin_spacing_3">3dp</dimen>
+    <dimen name="margin_spacing_4">4dp</dimen>
+    <dimen name="margin_spacing_5">5dp</dimen>
+    <dimen name="margin_spacing_6">6dp</dimen>
+    <dimen name="margin_spacing_7">7dp</dimen>
+    <dimen name="margin_spacing_8">8dp</dimen>
+    <dimen name="margin_spacing_9">9dp</dimen>
+    <dimen name="margin_spacing_10">10dp</dimen>
+    <dimen name="margin_spacing_11">11dp</dimen>
+    <dimen name="margin_spacing_12">12dp</dimen>
+    <dimen name="margin_spacing_13">13dp</dimen>
+    <dimen name="margin_spacing_14">14dp</dimen>
+    <dimen name="margin_spacing_15">15dp</dimen>
+    <dimen name="margin_spacing_16">16dp</dimen>
+    <dimen name="margin_spacing_17">17dp</dimen>
+    <dimen name="margin_spacing_18">18dp</dimen>
+    <dimen name="margin_spacing_19">19dp</dimen>
+    <dimen name="margin_spacing_20">20dp</dimen>
+    <dimen name="margin_spacing_23">23dp</dimen>
+    <dimen name="margin_spacing_25">25dp</dimen>
+    <dimen name="margin_spacing_40">40dp</dimen>
+    <dimen name="margin_spacing_45">45dp</dimen>
+    <dimen name="margin_spacing_50">50dp</dimen>
+    <dimen name="margin_spacing_70">70dp</dimen>
+    <dimen name="margin_spacing_80">80dp</dimen>
+    <dimen name="margin_spacing_100">100dp</dimen>
+    <dimen name="margin_spacing_120">120dp</dimen>
+    <dimen name="margin_spacing_150">150dp</dimen>
+    <dimen name="margin_spacing_180">180dp</dimen>
+    <dimen name="margin_spacing_200">200dp</dimen>
+    <dimen name="margin_spacing_280">280dp</dimen>
+    <dimen name="margin_spacing_110">110dp</dimen>
+    <dimen name="margin_spacing_35">35dp</dimen>
+    <dimen name="margin_spacing_30">30dp</dimen>
+    <dimen name="margin_spacing_60">60dp</dimen>
+    <dimen name="margin_spacing_65">65dp</dimen>
+    <dimen name="margin_spacing_140">140dp</dimen>
+    <dimen name="margin_spacing_22">22dp</dimen>
+    <dimen name="margin_spacing_160">160dp</dimen>
+    <dimen name="margin_spacing_27">27dp</dimen>
+    <dimen name="me_gray_height">20dp</dimen>
+</resources>

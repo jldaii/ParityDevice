@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <com.corelibs.widget.NavBar
+        android:id="@+id/nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/layout_main_bg"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/layout_main_bg"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="@color/white"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        >
+                        <LinearLayout
+                            android:id="@+id/liny_from"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            >
+
+                            <TextView
+                                android:id="@+id/edt_place_from"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center|left"
+                                android:hint="出发地"
+                                android:paddingLeft="20dp"
+                                android:paddingTop="@dimen/margin_spacing_25"
+                                android:textColorHint="@color/black"
+                                android:textColor="@color/black"
+                                android:textCursorDrawable="@drawable/edit_place_bg"
+                                android:textSize="@dimen/margin_spacing_20" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="20dp"
+                                android:background="@color/cp_gray"
+                                />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@mipmap/icon_arrow_black"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="15dp"
+                            />
+
+                        <LinearLayout
+                            android:id="@+id/liny_to"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            >
+
+                            <TextView
+                                android:id="@+id/edt_place_to"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:textCursorDrawable="@drawable/edit_place_bg"
+                                android:gravity="center|right"
+                                android:paddingRight="20dp"
+                                android:paddingLeft="20dp"
+                                android:textSize="@dimen/margin_spacing_20"
+                                android:paddingTop="@dimen/margin_spacing_25"
+                                android:hint="目的地"
+                                android:textColorHint="@color/black"
+                                android:textColor="@color/black"
+                                />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginRight="20dp"
+                                android:background="@color/cp_gray"
+                                />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    >
+
+                    <RadioGroup
+                        android:id="@+id/rg_goods_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        >
+                        <RadioButton
+                            android:id="@+id/rb_goods"
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
+                            android:button="@null"
+                            android:background="@drawable/radiobutton_background"
+                            android:textColor="@color/radiobutton_textcolor"
+                            android:checked="true"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_nav"
+                            android:text="包裹"
+                            android:layout_marginRight="36dp"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/rb_file"
+                            android:layout_width="150dp"
+                            android:layout_height="50dp"
+                            android:button="@null"
+                            android:background="@drawable/radiobutton_background"
+                            android:textColor="@color/radiobutton_textcolor"
+                            android:checked="false"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_nav"
+                            android:text="文件"
+
+                            />
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="10dp"
+                        android:textSize="@dimen/text_nav"
+                        android:text="物品总重量"
+                        />
+
+                    <RelativeLayout
+                        android:layout_width="200dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="10dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/txt_kg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_nav"
+                            android:text="KG"
+                            />
+                        <EditText
+                            android:id="@+id/edt_goods_weight"
+                            android:layout_width="150dp"
+                            android:layout_height="match_parent"
+                            android:layout_toLeftOf="@id/txt_kg"
+                            android:gravity="center_vertical|right"
+                            android:hint="请输入实际重量"
+                            android:singleLine="true"
+                            android:maxLines="1"
+                            android:minWidth="100dp"
+                            android:paddingRight="10dp"
+                            android:background="@color/transparent"
+                            android:inputType="numberDecimal"
+                            android:maxLength="10"
+                            android:textCursorDrawable="@drawable/edit_cursor_red"
+                            />
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="15dp"
+            >
+
+            <Button
+                android:id="@+id/btn_to_query"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginRight="55dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_bg_red"
+                android:textSize="@dimen/text_nav"
+                android:text="查 询"
+                />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

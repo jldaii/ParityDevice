@@ -1,0 +1,2 @@
+include ':app', ':coreLib', ':datapersistence', ':citypicker'
+rootProject.name='ParityDevice'
