@@ -60,6 +60,9 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
     private NavBar navBar;
 
     private EditText edtQueryArea;
+
+    private ImageView imgDelInput;
+
     private CityListAdapter mCityAdapter;
     private ResultListAdapter mResultAdapter;
     private List<AreaMsgDbBean> mAllCities;
@@ -144,6 +147,8 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
         mSearchLayout = (LinearLayout) findViewById(R.id.search_layout);
         TextView overlay = (TextView) findViewById(R.id.tv_letter_overlay);
         mLetterBar = (SideLetterBar) findViewById(R.id.side_letter_bar);
+        imgDelInput = (ImageView) findViewById(R.id.img_del_input);
+
         mLetterBar.setOverlay(overlay);
         mLetterBar.setOnLetterChangedListener(new SideLetterBar.OnLetterChangedListener() {
             @Override
@@ -155,7 +160,12 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
                 mListView.setSelection(position);
             }
         });
-
+        imgDelInput.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtQueryArea.setText("");
+            }
+        });
         searchBox = (EditText) findViewById(R.id.et_search);
         searchBox.addTextChangedListener(new TextWatcher() {
             @Override
@@ -207,9 +217,11 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
                     clearBtn.setVisibility(View.GONE);
                     emptyView.setVisibility(View.GONE);
                     mResultListView.setVisibility(View.GONE);
+                    imgDelInput.setVisibility(View.INVISIBLE);
                 } else {
                     clearBtn.setVisibility(View.VISIBLE);
                     mResultListView.setVisibility(View.VISIBLE);
+                    imgDelInput.setVisibility(View.VISIBLE);
                     if (mAreaDataRequestBean == null) {
                         emptyView.setVisibility(View.VISIBLE);
                     } else {

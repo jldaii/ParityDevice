@@ -22,15 +22,33 @@
         layout="@layout/cp_view_search"
         android:visibility="gone"
         />
-
-    <EditText
-        android:id="@+id/edt_query_area"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/bg_edit_focus"
-        android:textCursorDrawable="@drawable/edit_cursor_red"
-        android:paddingLeft="10dp"
-        />
+        android:layout_height="wrap_content"
+        >
+
+        <EditText
+            android:id="@+id/edt_query_area"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_edit_focus"
+            android:textCursorDrawable="@drawable/edit_cursor_red"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:maxLength="30"
+            android:paddingRight="38dp"
+            />
+
+        <ImageView
+            android:id="@+id/img_del_input"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/cp_ic_search_clear"
+            android:visibility="invisible" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
