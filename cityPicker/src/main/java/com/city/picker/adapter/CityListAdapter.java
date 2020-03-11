@@ -14,6 +14,7 @@ import com.city.picker.view.activity.CityPickerActivity;
 import com.corelibs.utils.MyShareUtil;
 import com.corelibs.utils.PinyinUtils;
 import com.corelibs.views.WrapHeightGridView;
+import com.parity.datapersistence.constant.DataConstants;
 import com.parity.datapersistence.dbBean.AreaMsgDbBean;
 import com.parity.datapersistence.model.LocateState;
 
@@ -38,11 +39,13 @@ public class CityListAdapter extends BaseAdapter {
     private int locateState = LocateState.LOCATING;
     private String locatedCity;
     private  boolean ifin=true;
+    private String mType;
 
-    public CityListAdapter(Context mContext, List<AreaMsgDbBean> mCities,List<AreaMsgDbBean> hotCitys) {
+    public CityListAdapter(Context mContext, List<AreaMsgDbBean> mCities,List<AreaMsgDbBean> hotCitys,String type) {
         this.mContext = mContext;
         this.mCities = mCities;
         this.mHotCitys = hotCitys;
+        this.mType = type;
         this.inflater = LayoutInflater.from(mContext);
         if (mCities == null){
             mCities = new ArrayList<>();
@@ -116,6 +119,12 @@ public class CityListAdapter extends BaseAdapter {
             case 0:     //热门
                 view = inflater.inflate(R.layout.cp_view_hot_city, parent, false);
                 WrapHeightGridView gridView = (WrapHeightGridView) view.findViewById(R.id.gridview_hot_city);
+                TextView tvHot = view.findViewById(R.id.txt_hot);
+                if (TextUtils.equals(DataConstants.AreaDataConstant.TYPE_FROM,mType)){
+                    tvHot.setText("热门省市");
+                }else {
+                    tvHot.setText("热门国家");
+                }
                 final HotCityGridAdapter hotCityGridAdapter = new HotCityGridAdapter(mContext,mHotCitys);
                 gridView.setAdapter(hotCityGridAdapter);
                 gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

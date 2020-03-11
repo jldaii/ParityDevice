@@ -86,8 +86,9 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         StatusBarUtil.StatusBarLightMode(this);
 //        setStatusBar(this.getResources().getColor(R.color.businesstop));
-        initData();
         initView();
+        initData();
+        startView();
         //请求权限
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
 //            mLocationClient.startLocation();
@@ -110,9 +111,9 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
          * CityListAdapter 包含了热门 所以 在给它 出发或者目的地的时候 一并要给出热门的出发地或者目的地
          */
         if (TextUtils.equals(DataConstants.AreaDataConstant.TYPE_FROM,mType)){
-            mCityAdapter = new CityListAdapter(this, mAreaDataRequestBean.getFrom(),mAreaDataRequestBean.getHot_from());
+            mCityAdapter = new CityListAdapter(this, mAreaDataRequestBean.getFrom(),mAreaDataRequestBean.getHot_from(),mType);
         }else {
-            mCityAdapter = new CityListAdapter(this, mAreaDataRequestBean.getTo(),mAreaDataRequestBean.getHot_to());
+            mCityAdapter = new CityListAdapter(this, mAreaDataRequestBean.getTo(),mAreaDataRequestBean.getHot_to(),mType);
         }
         mCityAdapter.setOnCityClickListener(new CityListAdapter.OnCityClickListener() {
             @Override
@@ -141,15 +142,39 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
 
         navBar.setTitle(this.getString(R.string.txt_International_price_comparator));
         navBar.showBack();
+
         edtQueryArea = (EditText) findViewById(R.id.edt_query_area);
         mListView = (ListView) findViewById(R.id.listview_all_city);
-        mListView.setAdapter(mCityAdapter);
+
         mSearchLayout = (LinearLayout) findViewById(R.id.search_layout);
         TextView overlay = (TextView) findViewById(R.id.tv_letter_overlay);
         mLetterBar = (SideLetterBar) findViewById(R.id.side_letter_bar);
         imgDelInput = (ImageView) findViewById(R.id.img_del_input);
 
         mLetterBar.setOverlay(overlay);
+
+        searchBox = (EditText) findViewById(R.id.et_search);
+
+
+        emptyView = (ViewGroup) findViewById(R.id.empty_view);
+        mResultListView = (ListView) findViewById(R.id.listview_search_result);
+
+
+        clearBtn = (ImageView) findViewById(R.id.iv_search_clear);
+        cancelBtn = (TextView) findViewById(R.id.tv_search_cancel);
+
+        clearBtn.setOnClickListener(this);
+        cancelBtn.setOnClickListener(this);
+
+        if (HIDE_ALL_CITY) {
+            mSearchLayout.setVisibility(View.GONE);
+            mLetterBar.setVisibility(View.GONE);
+        }
+
+    }
+
+    private void startView() {
+        mListView.setAdapter(mCityAdapter);
         mLetterBar.setOnLetterChangedListener(new SideLetterBar.OnLetterChangedListener() {
             @Override
             public void onLetterChanged(String letter) {
@@ -166,7 +191,7 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
                 edtQueryArea.setText("");
             }
         });
-        searchBox = (EditText) findViewById(R.id.et_search);
+
         searchBox.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -261,8 +286,6 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
             }
         });
 
-        emptyView = (ViewGroup) findViewById(R.id.empty_view);
-        mResultListView = (ListView) findViewById(R.id.listview_search_result);
         mResultListView.setAdapter(mResultAdapter);
         mResultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -271,15 +294,10 @@ public class CityPickerActivity extends CheckPermissionsActivity implements View
             }
         });
 
-        clearBtn = (ImageView) findViewById(R.id.iv_search_clear);
-        cancelBtn = (TextView) findViewById(R.id.tv_search_cancel);
-
-        clearBtn.setOnClickListener(this);
-        cancelBtn.setOnClickListener(this);
-
-        if (HIDE_ALL_CITY) {
-            mSearchLayout.setVisibility(View.GONE);
-            mLetterBar.setVisibility(View.GONE);
+        if (TextUtils.equals(DataConstants.AreaDataConstant.TYPE_FROM,mType)){
+            edtQueryArea.setHint("请输入省份搜索");
+        }else {
+            edtQueryArea.setHint("请输入国家中文名称搜索");
         }
     }
 
